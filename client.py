@@ -7,5 +7,19 @@ host = socket.gethostname() # Get local machine name
 port = 12345                # Reserve a port for your service.
 
 s.connect((host, port))
-print s.recv(1024)
-s.close                     # Close the socket when done
+##print(s.recv(1024))
+
+while True:
+    data = s.recv(1024)
+    if data == 'q' or data=='Q':
+        s.close()
+        break;
+    else:
+        print("RECIEVED:" , data)
+        data = input( "SEND( TYPE q or Q to Quit):")
+        if data == 'Q' and data == 'q':
+            s.send(bytes(data,'UTF-8'))
+            s.close()
+            break
+        else:
+            s.send(bytes(data,'UTF-8'))
