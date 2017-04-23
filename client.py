@@ -16,10 +16,10 @@ while True:
         break;
     else:
         print("RECIEVED:" , data)
-        data = input( "SEND( TYPE q or Q to Quit):")
+        data = raw_input( "SEND( TYPE q or Q to Quit):")
         if data == 'Q' and data == 'q':
-            s.send(bytes(data,'UTF-8'))
+            s.send(data)
             s.close()
             break
         else:
-            s.send(bytes(data,'UTF-8'))
+            s.send(data)
